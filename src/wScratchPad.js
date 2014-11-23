@@ -116,6 +116,7 @@
           this.ctx.rect(0, 0, width, height);
           this.ctx.fill();
           this.$img.show();
+          this.options.callback();
         }
         else {
           // Have to load image before we can use it.
@@ -125,6 +126,7 @@
           .load(function () {
             _this.ctx.drawImage(this, 0, 0, width, height);
             _this.$img.show();
+            _this.options.callback();
           });
         }
       }
@@ -283,7 +285,8 @@
     scratchUp   : null,       // Set scratchUp callback.
     scratchMove : null,       // Set scratcMove callback.
     cursor      : 'crosshair' // Set cursor.
-  };
+    callback    : function(){};       //Set default callback
+    };
 
   $.fn.bindMobileEvents = function () {
     $(this).on('touchstart touchmove touchend touchcancel', function (event) {
