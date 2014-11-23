@@ -29,7 +29,7 @@
         this.$el.css('position', 'relative');
       }
 
-      this.$img = $('<img src=""/>').attr('crossOrigin', '').css({position: 'absolute', width: '100%', height: '100%'});
+      this.$img = $('<img src=""/>').attr('crossOrigin', "Anonymous").css({position: 'absolute', width: '100%', height: '100%'});
 
       // Make sure we sett style width height here for elastic stretch
       // and better support for mobile if we are resizing the scratch pad.
@@ -120,6 +120,7 @@
         else {
           // Have to load image before we can use it.
           $(new Image())
+          .attr('crossOrigin', "Anonymous")
           .attr('src', this.options.fg)
           .load(function () {
             _this.ctx.drawImage(this, 0, 0, width, height);
